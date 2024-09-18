@@ -1,5 +1,7 @@
 public interface ICommand
 {
-    void Excecute();
+    void Execute();
     void Undo();
+
+    bool IsFinished();
 }

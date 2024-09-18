@@ -21,8 +21,6 @@ public class Rotater : MonoBehaviour, ITransformAffector
     {
         if (rotating) return;
 
-        Debug.Log("rotater called");
-
         rotation = Quaternion.Euler(_rotateVector * angle);
         StartCoroutine(CR_Rotate(rotation));
     }
@@ -34,7 +32,6 @@ public class Rotater : MonoBehaviour, ITransformAffector
         for (int i = 0; i < numOfTurn; i++)
         {
             float tick = 0f;
-            Debug.Log("rotater tick: " + tick);
             Quaternion startRotaion = transform.rotation;
             Quaternion endRotation = rotation * transform.rotation;
             while (tick < rotateTime)

@@ -17,7 +17,6 @@ public class Mover : MonoBehaviour, ITransformAffector
 
     IEnumerator CR_Move()
     {
-        Debug.Log("mover called");
         moving = true;
 
         float tick = 0f;
@@ -25,7 +24,6 @@ public class Mover : MonoBehaviour, ITransformAffector
         while (tick < moveTime)
         {
             tick += Time.deltaTime;
-            Debug.Log("mover tick: " + tick);
             transform.position = Vector3.Lerp(startPos, startPos + direction * distance, tick / moveTime);
             yield return null;
         }
