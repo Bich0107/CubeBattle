@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Rotater : MonoBehaviour, ITransformAffector
 {
-    Camera cam;
+    [SerializeField] Transform trans;
     [SerializeField] float rotateTime;
     [SerializeField] float angle;
     [Tooltip("Object will rotate angle degree numOfTurn time")]
@@ -11,11 +11,6 @@ public class Rotater : MonoBehaviour, ITransformAffector
 
     Quaternion rotation;
     [SerializeField] bool rotating = false;
-
-    void Start()
-    {
-        cam = Camera.main;
-    }
 
     public void Rotate(Vector3 _rotateVector)
     {
@@ -32,12 +27,12 @@ public class Rotater : MonoBehaviour, ITransformAffector
         for (int i = 0; i < numOfTurn; i++)
         {
             float tick = 0f;
-            Quaternion startRotaion = transform.rotation;
-            Quaternion endRotation = rotation * transform.rotation;
+            Quaternion startRotaion = trans.rotation;
+            Quaternion endRotation = rotation * trans.rotation;
             while (tick < rotateTime)
             {
                 tick += Time.deltaTime;
-                transform.rotation = Quaternion.Slerp(startRotaion, endRotation, tick / rotateTime);
+                trans.rotation = Quaternion.Slerp(startRotaion, endRotation, tick / rotateTime);
                 yield return null;
             }
         }

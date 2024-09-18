@@ -41,14 +41,26 @@ public class InputManager : MonoBehaviour
     {
         if (!released) return;
 
-        Vector2 movementVector = (releasePos - clickPos).normalized;
+        if (CheckClickPos())
+        {
+            Vector2 movementVector = (releasePos - clickPos).normalized;
 
-        ICommand command = new MoveCommand(player, movementVector);
-        CommandInvoker.ExecuteCommand(command);
+            ICommand command = new MoveCommand(player, movementVector);
+            CommandInvoker.ExecuteCommand(command);
 
-        releasePos = Vector3.zero;
-        clickPos = Vector3.zero;
+            releasePos = Vector3.zero;
+            clickPos = Vector3.zero;
+        }
 
         released = false;
+    }
+
+    bool CheckClickPos()
+    {
+        if (Mathf.Approximately(clickPos.x, releasePos.x) && Mathf.Approximately(clickPos.y, releasePos.y))
+        {
+            return false;
+        }
+        return true;
     }
 }

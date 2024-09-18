@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Mover : MonoBehaviour, ITransformAffector
 {
+    [SerializeField] Transform trans;
     [SerializeField] Vector3 direction;
     [SerializeField] float distance;
     [SerializeField] float moveTime;
@@ -20,11 +21,11 @@ public class Mover : MonoBehaviour, ITransformAffector
         moving = true;
 
         float tick = 0f;
-        Vector3 startPos = transform.position;
+        Vector3 startPos = trans.position;
         while (tick < moveTime)
         {
             tick += Time.deltaTime;
-            transform.position = Vector3.Lerp(startPos, startPos + direction * distance, tick / moveTime);
+            trans.position = Vector3.Lerp(startPos, startPos + direction * distance, tick / moveTime);
             yield return null;
         }
 
