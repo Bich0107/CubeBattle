@@ -35,8 +35,6 @@ public class PathSetter : MonoBehaviour
         path.transform.position = _position;
         path.SetActive(true);
 
-
-
         return path;
     }
 
