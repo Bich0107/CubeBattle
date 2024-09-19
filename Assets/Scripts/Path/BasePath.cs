@@ -8,7 +8,7 @@ public class BasePart : PathScript, ITriggerByPlayer
 
     void Awake()
     {
-        pathSetter = FindObjectOfType<pathSetter>();
+        pathSetter = FindObjectOfType<PathSetter>();
     }
 
     void OnEnable()
@@ -16,18 +16,18 @@ public class BasePart : PathScript, ITriggerByPlayer
         Appear();
     }
 
-    protected override void Appear()
+    public override void Appear()
     {
-
+        IsNew = true;
     }
 
-    public void Trigger()
+    public void Triggered()
     {
-
+        pathSetter.SpawnByNumOfRound(tile);
     }
 
-    protected override void Disappear()
+    public override void Disappear()
     {
-
+        gameObject.SetActive(false);
     }
 }

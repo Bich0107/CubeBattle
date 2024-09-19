@@ -22,5 +22,6 @@ public class Tile
         target = _go;
     }
 
+    public GameObject Target => target;
     public bool IsOccupied => target != null;
 }

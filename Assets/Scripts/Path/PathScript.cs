@@ -4,13 +4,12 @@ using UnityEngine;
 
 public abstract class PathScript : MonoBehaviour
 {
-    [SerializeField] Tile tile;
-    public Tile Tile
-    {
-        get { return tile; }
-        set { tile = value; }
-    }
+    [SerializeField] protected Tile tile;
+    public Tile Tile => tile;
+    public bool IsNew;
 
-    protected virtual void Appear() { }
-    protected virtual void Disappear() { }
+    public void SetTile(Tile _tile) => tile = _tile;
+
+    public virtual void Appear() { }
+    public virtual void Disappear() { }
 }
