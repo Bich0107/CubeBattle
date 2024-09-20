@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class PathSetter : MonoBehaviour
 {
@@ -9,20 +10,23 @@ public class PathSetter : MonoBehaviour
     [Header("General settings")]
     [SerializeField] List<PathScript> paths;
     [SerializeField] Tile spawnTile;
+    [SerializeField] Vector3 spawnPos;
     [SerializeField] float distance;
-    //[SerializeField] float specialPathChance = 0.2f;
-    [Header("Path style around settings")]
     [SerializeField] int numOfRound;
 
-    void Start()
+    void Awake()
     {
         tileManager = FindObjectOfType<TileManager>();
-        GeneratePath();
+
+        SetFirstPath();
     }
 
-    public void GeneratePath()
+    void SetFirstPath()
     {
-        SpawnByNumOfRound(spawnTile);
+        GameObject firstPath = SpawnPath(spawnPos);
+        paths.Add(firstPath.GetComponent<PathScript>());
+        firstPath.GetComponent<PathScript>().SetTile(spawnTile);
+        spawnTile.SetObject(firstPath);
     }
 
     GameObject SpawnPath(Vector3 _position)
@@ -45,6 +49,10 @@ public class PathSetter : MonoBehaviour
         pos.y = startPos.y;
 
         int x, z;
+
+        x = startTile.X;
+        z = startTile.Z;
+        AddPathToTile(startPos, pos, startTile, x, z);
 
         for (int i = 1; i <= numOfRound; i++)
         {
@@ -93,7 +101,7 @@ public class PathSetter : MonoBehaviour
         UpdatePathsStatus();
     }
 
-    void AddPathToTile(Vector3 _startPos, Vector3 _pos, Tile _startTile, int tileX, int tileZ, int _numOfRound)
+    void AddPathToTile(Vector3 _startPos, Vector3 _pos, Tile _startTile, int tileX, int tileZ, int _numOfRound = 0)
     {
         // make sure tiles created is in range base on current num of round
         if (Mathf.Abs(tileX - _startTile.X) + Mathf.Abs(tileZ - _startTile.Z) > _numOfRound) return;

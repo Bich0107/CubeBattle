@@ -1,13 +1,10 @@
 using UnityEngine;
 
-public class PlayerFoot : MonoBehaviour
+public class PlayerFoot : MonoBehaviour, IHitByObstacle
 {
-    void OnTriggerEnter(Collider other)
-    {
-        ITriggerByPlayer target = other.GetComponent<ITriggerByPlayer>();
-        if (target != null)
-        {
-            target.Triggered();
-        }
+    
+
+    public void Hit() {
+        Debug.Log("hit", gameObject);
     }
 }

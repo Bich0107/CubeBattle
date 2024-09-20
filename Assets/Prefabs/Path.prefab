@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7508117567540034250}
   - component: {fileID: 3376359016561213554}
   - component: {fileID: 4315564200829497773}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Path
   m_TagString: Path
   m_Icon: {fileID: 0}
@@ -123,6 +123,7 @@ MonoBehaviour:
     target: {fileID: 0}
     x: 0
     z: 0
+  IsNew: 1
 --- !u!54 &4315564200829497773
 Rigidbody:
   m_ObjectHideFlags: 0

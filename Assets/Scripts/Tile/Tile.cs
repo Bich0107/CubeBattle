@@ -17,11 +17,7 @@ public class Tile
         z = _z;
     }
 
-    public void SetObject(GameObject _go)
-    {
-        target = _go;
-    }
-
+    public void SetObject(GameObject _go) => target = _go;
     public GameObject Target => target;
     public bool IsOccupied => target != null;
 }
