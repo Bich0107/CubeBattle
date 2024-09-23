@@ -9,9 +9,6 @@ public class PathSetter : MonoBehaviour
     [SerializeField] TileManager tileManager;
     [Header("General settings")]
     [SerializeField] List<PathScript> paths;
-    [SerializeField] Tile spawnTile;
-    [SerializeField] Vector3 spawnPos;
-    [SerializeField] float distance;
     [SerializeField] int numOfRound;
 
     void Awake()
@@ -23,10 +20,10 @@ public class PathSetter : MonoBehaviour
 
     void SetFirstPath()
     {
-        GameObject firstPath = SpawnPath(spawnPos);
+        GameObject firstPath = SpawnPath(tileManager.StartPos);
         paths.Add(firstPath.GetComponent<PathScript>());
-        firstPath.GetComponent<PathScript>().SetTile(spawnTile);
-        spawnTile.SetObject(firstPath);
+        firstPath.GetComponent<PathScript>().SetTile(tileManager.StartTile);
+        tileManager.StartTile.SetObject(firstPath);
     }
 
     GameObject SpawnPath(Vector3 _position)
@@ -44,7 +41,7 @@ public class PathSetter : MonoBehaviour
     public void SpawnByNumOfRound(Tile _startTile)
     {
         Tile startTile = _startTile;
-        Vector3 startPos = _startTile.Target.transform.position;
+        Vector3 startPos = tileManager.GetTilePosition(_startTile);
         Vector3 pos = new Vector3();
         pos.y = startPos.y;
 
@@ -108,6 +105,9 @@ public class PathSetter : MonoBehaviour
 
         Tile _tile = tileManager.GetTile(tileX, tileZ);
 
+        // if tile is out of range
+        if (_tile == null) return;
+
         // if the tile already holding an object, check if it a path object, if it is, renew its status
         if (_tile.IsOccupied)
         {
@@ -117,8 +117,7 @@ public class PathSetter : MonoBehaviour
         }
 
         // find new tile position base on the starting tile and its position
-        _pos.x = _startPos.x + (_tile.X - _startTile.X) * distance;
-        _pos.z = _startPos.z + (_tile.Z - _startTile.Z) * distance;
+        _pos = tileManager.GetTilePosition(_tile);
 
         // create path and add it to list for later control 
         GameObject path = SpawnPath(_pos);
