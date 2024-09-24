@@ -30,17 +30,19 @@ public class ScrollingPillar : Obstacle
 
     public override void Active()
     {
+        RotateToPlayer();
+
         // play animation and start moving sequence
         animator.SetTrigger(s_triggerActive);
         StartCoroutine(CR_MoveSequence());
+
+        Deactive();
     }
 
     IEnumerator CR_MoveSequence()
     {
         yield return activeDelay;
-
         rotateObject.Rotate();
-        RotateToPlayer();
         moveObject.Move(GetPlayerDirection());
     }
 }

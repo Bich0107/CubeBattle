@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,11 +8,46 @@ public class InputManager : MonoBehaviour
 {
     [SerializeField] TileManager tileManager;
     [SerializeField] PlayerController player;
-    [SerializeField] Vector3 clickPos;
-    [SerializeField] Vector3 releasePos;
-    bool released = false;
     [SerializeField] bool disableControl = false;
+    Vector3 clickPos;
+    Vector3 releasePos;
+    Vector2 movementVector;
+    bool released = false;
 
+#if UNITY_EDITOR_WIN
+    void Update()
+    {
+        if (!disableControl)
+        {
+            ProcessKeyboardInput();
+        }
+    }
+
+    void ProcessKeyboardInput()
+    {
+        if (Input.anyKeyDown)
+        {
+            float xDir = Input.GetAxis("Horizontal");
+            float zDir = Input.GetAxis("Vertical");
+
+            if (xDir != 0f)
+            {
+                movementVector = Vector2.right * xDir;
+            }
+            else if (zDir != 0f)
+            {
+                movementVector = Vector2.up * zDir;
+            }
+
+            if (CheckMoveTile(movementVector))
+            {
+                ICommand command = new MoveCommand(player, movementVector);
+                CommandInvoker.ExecuteCommand(command);
+            }
+        }
+    }
+
+#else
     void Update()
     {
         if (!disableControl)
@@ -43,7 +79,7 @@ public class InputManager : MonoBehaviour
     {
         if (!released) return;
 
-        Vector2 movementVector = (releasePos - clickPos).normalized;
+        movementVector = (releasePos - clickPos).normalized;
 
         if (CheckClickPos())
         {
@@ -59,6 +95,16 @@ public class InputManager : MonoBehaviour
 
         released = false;
     }
+
+    bool CheckClickPos()
+    {
+        if (Mathf.Approximately(clickPos.x, releasePos.x) && Mathf.Approximately(clickPos.y, releasePos.y))
+        {
+            return false;
+        }
+        return true;
+    }
+#endif
 
     bool CheckMoveTile(Vector2 moveVector)
     {
@@ -80,15 +126,6 @@ public class InputManager : MonoBehaviour
 
         if (moveTile == null) return false;
 
-        return true;
-    }
-
-    bool CheckClickPos()
-    {
-        if (Mathf.Approximately(clickPos.x, releasePos.x) && Mathf.Approximately(clickPos.y, releasePos.y))
-        {
-            return false;
-        }
         return true;
     }
 }

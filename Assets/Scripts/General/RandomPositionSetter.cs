@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
-public class Goal : MonoBehaviour, ITriggerByPlayer
+public class RandomPositionSetter : MonoBehaviour
 {
     TileManager tileManager;
     [Header("Spawn tile coordinates")]
@@ -16,22 +15,17 @@ public class Goal : MonoBehaviour, ITriggerByPlayer
         tileManager = FindObjectOfType<TileManager>();
     }
 
-    void Start()
+    void OnEnable()
     {
         Spawn();
     }
 
     void Spawn()
     {
-        Tile spawnTile = tileManager.GetRandomTileInRange(minX, maxX + 1, minZ, maxZ + 1);
+        Tile spawnTile = tileManager.GetRandomTileInRange(minX, maxX, minZ, maxZ);
         Vector3 spawnPos = tileManager.GetTilePosition(spawnTile);
         spawnTile.SetObject(gameObject);
         transform.position = spawnPos;
-        Debug.Log("spawn at: " + transform.position);
-    }
-
-    public void Triggered()
-    {
-        Debug.Log("Player reached goal");
+        Debug.Log(gameObject.name + " spawn at: " + transform.position);
     }
 }
