@@ -565,4 +565,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeDelayTime: 1
+  deactiveDelayTime: 1
   playerHit: 0

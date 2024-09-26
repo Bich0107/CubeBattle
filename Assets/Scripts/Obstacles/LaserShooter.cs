@@ -8,7 +8,14 @@ public class LaserShooter : Obstacle
     [SerializeField] Vector3 baseScale;
     [SerializeField] Vector3 expandScale;
     [SerializeField] float expandTime;
+    [SerializeField] float aimTime;
+    WaitForSeconds aimWait;
     bool aiming = false;
+
+    void OnEnable()
+    {
+        aimWait = new WaitForSeconds(aimTime);
+    }
 
     void OnTriggerEnter(Collider other)
     {
@@ -56,8 +63,9 @@ public class LaserShooter : Obstacle
 
     IEnumerator CR_Shoot()
     {
-        yield return activeDelay;
+        yield return aimWait;
         aiming = false;
+        yield return activeDelay;
         lineRenderer.enabled = false;
         beam.SetActive(true);
 

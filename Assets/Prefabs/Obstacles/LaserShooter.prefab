@@ -276,14 +276,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b75879d3273a0b54996edd6da689a4b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeDelayTime: 1.5
-  deactiveDelayTime: 10
+  activeDelayTime: 0.5
+  deactiveDelayTime: 2.5
   playerHit: 0
   lineRenderer: {fileID: 6235743573600957788}
   beam: {fileID: 8927690192767592063}
   baseScale: {x: 0.63, y: 0.1, z: 0.63}
   expandScale: {x: 0.63, y: 150, z: 0.63}
-  expandTime: 0.5
+  expandTime: 0.35
+  aimTime: 1
 --- !u!1 &3974860872120165364
 GameObject:
   m_ObjectHideFlags: 0
