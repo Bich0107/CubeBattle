@@ -9,6 +9,8 @@ public class Slot : MonoBehaviour
     [SerializeField] TextMeshProUGUI amountText;
     [SerializeField] Image itemImage;
     public Item SlotItem => slotSO.Item;
+    public int Amount => slotSO.Amount;
+    public int MaxStack => SlotItem == null ? 0 : SlotItem.MaxStack;
 
     public void SetSlotSO(InventorySlotSO _slotSO)
     {
@@ -19,7 +21,7 @@ public class Slot : MonoBehaviour
     void UpdateUI()
     {
         amountText.text = slotSO.Amount.ToString();
-        
+
         if (slotSO.Item != null)
         {
             itemImage.sprite = slotSO.Item.Sprite;
@@ -30,14 +32,23 @@ public class Slot : MonoBehaviour
         }
     }
 
-    public void AddItem(Item _item, ItemIndex _itemIndex, ref int _addAmount)
+    public int SetItem(Item _item, int _addAmount)
     {
-        // if this slot does not contain this item or its stack is full, return
-        if (SlotItem != null && (SlotItem.ItemIndex != _itemIndex || SlotItem.MaxStack == slotSO.Amount)) return;
+        slotSO.Item = _item;
 
-        // if this slot is empty
-        if (SlotItem == null) slotSO.Item = _item;
+        return UpdateAmount(_addAmount);
+    }
 
+    public int AddItem(int _addAmount)
+    {
+        // if its stack is full, return
+        if (SlotItem.MaxStack == slotSO.Amount) return _addAmount;
+
+        return UpdateAmount(_addAmount);
+    }
+
+    int UpdateAmount(int _addAmount)
+    {
         // find the real add amount
         int remainSpace = SlotItem.MaxStack - slotSO.Amount;
         int realAddAmount = remainSpace >= _addAmount ? _addAmount : remainSpace;
@@ -47,14 +58,16 @@ public class Slot : MonoBehaviour
         slotSO.Amount += realAddAmount;
 
         UpdateUI();
+
+        return _addAmount;
     }
 
-    public void TakeItem(ItemIndex _itemIndex, ref int _takeAmount)
+    public int TakeItem(int _takeAmount)
     {
-        // if this slot is empty or does not contain this item, return
-        if (SlotItem == null || SlotItem.ItemIndex != _itemIndex) return;
+        // if this slot is empty, return
+        if (SlotItem == null) return 0;
 
-        // find the real add amount
+        // find the real take amount
         int realTakeAmount = slotSO.Amount >= _takeAmount ? _takeAmount : slotSO.Amount;
 
         // update slot amount and remain take amount
@@ -63,6 +76,8 @@ public class Slot : MonoBehaviour
 
         if (slotSO.Amount == 0) EmptySlot();
         else UpdateUI();
+
+        return _takeAmount;
     }
 
     public void EmptySlot()
@@ -74,12 +89,25 @@ public class Slot : MonoBehaviour
 
     public void DisplayDescription()
     {
-        Debug.Log($"Description of item {SlotItem.Name}: {SlotItem.Description}");
+        // testing
+        TakeItem(1);
+        UpdateUI();
+
+        if (SlotItem == null) Debug.Log("Slot empty");
+        else
+            Debug.Log($"Description of item {SlotItem.Name}: {SlotItem.Description}");
     }
 
     public bool HaveSameItem(Slot other)
     {
+        if (other.SlotItem == null) return false;
+
         return other.SlotItem.ItemIndex == other.SlotItem.ItemIndex;
+    }
+
+    public bool HaveSameItem(ItemIndex index)
+    {
+        return SlotItem.ItemIndex == index;
     }
 
     public void Reset()
@@ -88,4 +116,13 @@ public class Slot : MonoBehaviour
         slotSO.Item = null;
         UpdateUI();
     }
+
+    public bool IsFull()
+    {
+        if (SlotItem == null) return false;
+
+        return SlotItem.MaxStack == slotSO.Amount;
+    }
+
+    public bool IsEmpty => SlotItem == null;
 }

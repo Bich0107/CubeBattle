@@ -8,6 +8,6 @@ public class InventoryTester : MonoBehaviour
 
     public void Add()
     {
-        Debug.Log("Add item: " + (inventory.AddItem(itemIndex, amount) ? "success" : "failed"));
+        inventory.AddItem(itemIndex, amount);
     }
 }
