@@ -6,7 +6,9 @@ public class SlotHelper
 {
     public static void SwapSlots(Slot slot1, Slot slot2)
     {
-
+        InventorySlotSO temp = slot1.SlotSO;
+        slot1.SetSlotSO(slot2.SlotSO);
+        slot2.SetSlotSO(temp);
     }
 
     public static void MergeSlots(Slot slot1, Slot slot2)
@@ -33,5 +35,19 @@ public class SlotHelper
             totalItem = slot1.AddItem(slot2.Amount); // add item to slot1 and keep the remainder
             slot2.TakeItem(slot2.Amount - totalItem); // update slot2 amount
         }
+    }
+
+    public static bool HaveSameItem(Slot slot1, Slot slot2)
+    {
+        if (slot1.SlotItem == null || slot2.SlotItem == null) return false;
+
+        return slot1.SlotItem.ItemIndex == slot2.SlotItem.ItemIndex;
+    }
+
+    public static bool HaveSameItem(Slot slot, ItemIndex index)
+    {
+        if (slot.SlotItem == null) return false;
+
+        return slot.SlotItem.ItemIndex == index;
     }
 }

@@ -2,12 +2,14 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class Slot : MonoBehaviour
+public class Slot : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField] InventorySlotSO slotSO;
     [SerializeField] TextMeshProUGUI amountText;
     [SerializeField] Image itemImage;
+    public InventorySlotSO SlotSO => slotSO;
     public Item SlotItem => slotSO.Item;
     public int Amount => slotSO.Amount;
     public int MaxStack => SlotItem == null ? 0 : SlotItem.MaxStack;
@@ -62,6 +64,11 @@ public class Slot : MonoBehaviour
         return _addAmount;
     }
 
+    /// <summary>
+    /// This function take item from this slot and return the taken amount
+    /// </summary>
+    /// <param name="_takeAmount">The amount to be taken.</param>
+    /// <returns>The number of item taken form this slot.</returns>
     public int TakeItem(int _takeAmount)
     {
         // if this slot is empty, return
@@ -70,14 +77,12 @@ public class Slot : MonoBehaviour
         // find the real take amount
         int realTakeAmount = slotSO.Amount >= _takeAmount ? _takeAmount : slotSO.Amount;
 
-        // update slot amount and remain take amount
-        _takeAmount -= realTakeAmount;
+        // update slot amount
         slotSO.Amount -= realTakeAmount;
-
         if (slotSO.Amount == 0) EmptySlot();
         else UpdateUI();
 
-        return _takeAmount;
+        return realTakeAmount;
     }
 
     public void EmptySlot()
@@ -89,25 +94,9 @@ public class Slot : MonoBehaviour
 
     public void DisplayDescription()
     {
-        // testing
-        TakeItem(1);
-        UpdateUI();
-
         if (SlotItem == null) Debug.Log("Slot empty");
         else
             Debug.Log($"Description of item {SlotItem.Name}: {SlotItem.Description}");
-    }
-
-    public bool HaveSameItem(Slot other)
-    {
-        if (other.SlotItem == null) return false;
-
-        return other.SlotItem.ItemIndex == other.SlotItem.ItemIndex;
-    }
-
-    public bool HaveSameItem(ItemIndex index)
-    {
-        return SlotItem.ItemIndex == index;
     }
 
     public void Reset()
@@ -122,6 +111,12 @@ public class Slot : MonoBehaviour
         if (SlotItem == null) return false;
 
         return SlotItem.MaxStack == slotSO.Amount;
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        Debug.Log("clicked");
+        DisplayDescription();
     }
 
     public bool IsEmpty => SlotItem == null;
