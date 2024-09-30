@@ -6,8 +6,10 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] Mover mover;
     [SerializeField] Rotater rotater;
+    [SerializeField] Rotater turnRotater;
     ITransformAffector[] affectors;
     float direction;
+    bool isFaceForward = true;
 
     void Start()
     {
@@ -16,17 +18,35 @@ public class PlayerController : MonoBehaviour
 
     public void Move(Vector2 _movementVector)
     {
+        // compare x and y abs value, if x < y,  player is moving forward/backward, else player is moving left/right
         if (Mathf.Abs(_movementVector.x) < Mathf.Abs(_movementVector.y))
         {
             direction = _movementVector.y > 0f ? 1f : -1f;
-            rotater.Rotate(direction * Vector3.right);
-            mover.Move(direction * Vector3.forward);
+            if (!isFaceForward) // turn player if was facing diferrent direction
+            {
+                isFaceForward = true;
+                turnRotater.Rotate(direction * Vector3.up);
+            }
+            else    // get direction and move player
+            {
+                rotater.Rotate(direction * Vector3.right);
+                mover.Move(direction * Vector3.forward);
+            }
         }
         else
         {
             direction = _movementVector.x > 0f ? -1f : 1f;
-            rotater.Rotate(direction * Vector3.forward);
-            mover.Move(-direction * Vector3.right);
+            if (isFaceForward) // turn player if was facing diferrent direction
+            {
+                isFaceForward = false;
+                turnRotater.Rotate(-direction * Vector3.up);
+            }
+            else    // get direction and move player
+            {
+                rotater.Rotate(direction * Vector3.forward);
+                mover.Move(-direction * Vector3.right);
+            }
+
         }
     }
 

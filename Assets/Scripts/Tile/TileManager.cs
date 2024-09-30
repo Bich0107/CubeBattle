@@ -25,11 +25,11 @@ public class TileManager : MonoBehaviour
 
     void Initialize()
     {
-        for (int i = 0; i < sizeX; i++)
+        for (int i = 0; i < sizeZ; i++)
         {
-            for (int j = 0; j < sizeZ; j++)
+            for (int j = 0; j < sizeX; j++)
             {
-                tiles[j + i * sizeX] = new Tile(i, j);
+                tiles[j + i * sizeX] = new Tile(j, i);
             }
         }
     }
@@ -37,38 +37,38 @@ public class TileManager : MonoBehaviour
     public Tile GetTile(int x, int z)
     {
         if (z < 0 || z >= sizeZ || x < 0 || x >= sizeX) return null;
-        return tiles[z + x * sizeX];
+        return tiles[z * sizeX + x];
     }
 
     public Tile GetTile(Vector3 position)
     {
         int x = Mathf.RoundToInt(startTile.X + (position.x - startPos.x) / distance);
         int z = Mathf.RoundToInt(startTile.Z + (position.z - startPos.z) / distance);
-        return tiles[z + x * sizeX];
+        return tiles[z * sizeX + x];
     }
 
     public Tile GetFrontTile(Tile tile)
     {
         if (tile.Z + 1 >= sizeZ) return null;
-        return tiles[tile.Z + 1 + tile.X * sizeX];
+        return tiles[(tile.Z + 1) * sizeX + tile.X];
     }
 
     public Tile GetBackTile(Tile tile)
     {
         if (tile.Z - 1 < 0) return null;
-        return tiles[tile.Z - 1 + tile.X * sizeX];
+        return tiles[(tile.Z - 1) * sizeX + tile.X];
     }
 
     public Tile GetRightTile(Tile tile)
     {
         if (tile.X + 1 >= sizeX) return null;
-        return tiles[tile.Z + (tile.X + 1) * sizeX];
+        return tiles[tile.Z * sizeX + tile.X + 1];
     }
 
     public Tile GetLeftTile(Tile tile)
     {
         if (tile.X - 1 < 0) return null;
-        return tiles[tile.Z + (tile.X - 1) * sizeX];
+        return tiles[tile.Z * sizeX + tile.X - 1];
     }
 
     public Vector3 GetTilePosition(Tile tile)
@@ -82,10 +82,10 @@ public class TileManager : MonoBehaviour
         return pos;
     }
 
-    public Tile GetRandomTileInRange(int minXInclusive, int maxXExclusive, int minZInclusive, int maxZExclusive)
+    public Tile GetRandomTileInRange(int minX, int maxX, int minZ, int maxZ)
     {
-        int x = Random.Range(minXInclusive, maxXExclusive);
-        int z = Random.Range(minZInclusive, maxZExclusive);
+        int x = Random.Range(minX, maxX + 1);
+        int z = Random.Range(minZ, maxZ + 1);
         return GetTile(x, z);
     }
 
