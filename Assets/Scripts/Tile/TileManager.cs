@@ -16,6 +16,9 @@ public class TileManager : MonoBehaviour
 
     [SerializeField] float distance;
     [SerializeField] Tile[] tiles;
+    public int SizeX => sizeX;
+    public int SizeZ => sizeZ;
+    public Tile[] Tiles => tiles;
 
     void Awake()
     {

@@ -187,7 +187,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 8, y: 1, z: 8}
+  m_Size: {x: 8, y: 1, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7530675740327331042
 MonoBehaviour:
@@ -264,7 +264,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: fb5e62c5c7c24d348bcb36591c4617d3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -369,7 +369,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: fb5e62c5c7c24d348bcb36591c4617d3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -429,7 +429,7 @@ GameObject:
   - component: {fileID: 7896762659891393434}
   m_Layer: 6
   m_Name: ScrollingPillar
-  m_TagString: Untagged
+  m_TagString: ScrollingPillar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -442,9 +442,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9102668674567840702}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 200, y: 0, z: 210}
-  m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4397174991859115958}
@@ -452,7 +452,7 @@ Transform:
   - {fileID: 9055856731074245463}
   - {fileID: 2741001860536357149}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &7012388745307709742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -466,7 +466,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateSpeed: {x: -360, y: 0, z: 0}
-  localRotation: 0
+  localRotation: 1
   rotateOnAwake: 0
 --- !u!114 &4626485235917519728
 MonoBehaviour:
@@ -508,7 +508,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0
 --- !u!95 &4749875929395496431
 Animator:
@@ -550,8 +550,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 5, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2.6, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: -1.1370041e-17}
 --- !u!114 &7896762659891393434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -565,5 +565,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeDelayTime: 1
-  deactiveDelayTime: 1
+  deactiveDelayTime: 3
   playerHit: 0

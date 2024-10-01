@@ -34,13 +34,4 @@ public class CommandInvoker : MonoBehaviour
             }
         }
     }
-
-    public static void UndoCommand()
-    {
-        if (undoStack.Count > 0)
-        {
-            ICommand activeCommand = undoStack.Pop();
-            activeCommand.Undo();
-        }
-    }
 }

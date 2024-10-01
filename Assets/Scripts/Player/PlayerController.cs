@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
         affectors = GetComponents<ITransformAffector>();
     }
 
-    public void Move(Vector2 _movementVector)
+    public void Move(Vector2 _movementVector, bool _moveable)
     {
         // compare x and y abs value, if x < y,  player is moving forward/backward, else player is moving left/right
         if (Mathf.Abs(_movementVector.x) < Mathf.Abs(_movementVector.y))
@@ -27,8 +27,9 @@ public class PlayerController : MonoBehaviour
                 isFaceForward = true;
                 turnRotater.Rotate(direction * Vector3.up);
             }
-            else    // get direction and move player
+            else if (_moveable)
             {
+                direction = _movementVector.y > 0f ? 1f : -1f;
                 rotater.Rotate(direction * Vector3.right);
                 mover.Move(direction * Vector3.forward);
             }
@@ -41,12 +42,12 @@ public class PlayerController : MonoBehaviour
                 isFaceForward = false;
                 turnRotater.Rotate(-direction * Vector3.up);
             }
-            else    // get direction and move player
+            else if (_moveable)
             {
+                direction = _movementVector.x > 0f ? -1f : 1f;
                 rotater.Rotate(direction * Vector3.forward);
                 mover.Move(-direction * Vector3.right);
             }
-
         }
     }
 

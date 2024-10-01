@@ -1,14 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.AI;
 
-public class InputManager : MonoBehaviour
+public class PlayerInput : MonoBehaviour
 {
     [SerializeField] TileManager tileManager;
     [SerializeField] PlayerController player;
     [SerializeField] bool disableControl = false;
+    [Header("Min and max tile index to restrict player movement")]
+    [SerializeField] int minX;
+    [SerializeField] int maxX;
+    [SerializeField] int minZ, maxZ;
     Vector3 clickPos;
     Vector3 releasePos;
     Vector2 movementVector;
@@ -39,11 +39,8 @@ public class InputManager : MonoBehaviour
                 movementVector = Vector2.up * zDir;
             }
 
-            if (CheckMoveTile(movementVector))
-            {
-                ICommand command = new MoveCommand(player, movementVector);
-                CommandInvoker.ExecuteCommand(command);
-            }
+            ICommand command = new MoveCommand(player, movementVector, CheckMoveTile(movementVector));
+            CommandInvoker.ExecuteCommand(command);
         }
     }
 
@@ -126,6 +123,11 @@ public class InputManager : MonoBehaviour
 
         if (moveTile == null) return false;
 
-        return true;
+        if (moveTile.X >= minX && moveTile.X <= maxX && moveTile.Z >= minZ && moveTile.Z <= maxZ)
+        {
+            return true;
+        }
+
+        return false;
     }
 }

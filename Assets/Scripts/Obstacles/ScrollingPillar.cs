@@ -40,9 +40,12 @@ public class ScrollingPillar : Obstacle
     IEnumerator CR_MoveSequence()
     {
         RotateToPlayer();
+
+        // store the player direction when obstacle first detect player
         Vector3 playerDirection = GetPlayerDirection();
 
         yield return activeDelay;
+
         rotateObject.Rotate();
         moveObject.Move(playerDirection);
     }
