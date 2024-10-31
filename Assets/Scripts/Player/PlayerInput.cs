@@ -14,37 +14,36 @@ public class PlayerInput : MonoBehaviour
     Vector2 movementVector;
     bool released = false;
 
-#if UNITY_EDITOR_WIN
-    void Update()
-    {
-        if (!disableControl)
-        {
-            ProcessKeyboardInput();
-        }
-    }
+    // #if UNITY_EDITOR
+    // void Update()
+    // {
+    //     if (!disableControl)
+    //     {
+    //         ProcessKeyboardInput();
+    //     }
+    // }
 
-    void ProcessKeyboardInput()
-    {
-        if (Input.anyKeyDown)
-        {
-            float xDir = Input.GetAxis("Horizontal");
-            float zDir = Input.GetAxis("Vertical");
+    // void ProcessKeyboardInput()
+    // {
+    //     if (Input.anyKeyDown)
+    //     {
+    //         float xDir = Input.GetAxis("Horizontal");
+    //         float zDir = Input.GetAxis("Vertical");
 
-            if (xDir != 0f)
-            {
-                movementVector = Vector2.right * xDir;
-            }
-            else if (zDir != 0f)
-            {
-                movementVector = Vector2.up * zDir;
-            }
+    //         if (xDir != 0f)
+    //         {
+    //             movementVector = Vector2.right * xDir;
+    //         }
+    //         else if (zDir != 0f)
+    //         {
+    //             movementVector = Vector2.up * zDir;
+    //         }
 
-            ICommand command = new MoveCommand(player, movementVector, CheckMoveTile(movementVector));
-            CommandInvoker.ExecuteCommand(command);
-        }
-    }
-
-#else
+    //         ICommand command = new MoveCommand(player, movementVector, CheckMoveTile(movementVector));
+    //         CommandInvoker.ExecuteCommand(command);
+    //     }
+    // }
+    // #else
     void Update()
     {
         if (!disableControl)
@@ -82,7 +81,7 @@ public class PlayerInput : MonoBehaviour
         {
             if (CheckMoveTile(movementVector))
             {
-                ICommand command = new MoveCommand(player, movementVector);
+                ICommand command = new MoveCommand(player, movementVector, true);
                 CommandInvoker.ExecuteCommand(command);
 
                 releasePos = Vector3.zero;
@@ -101,7 +100,7 @@ public class PlayerInput : MonoBehaviour
         }
         return true;
     }
-#endif
+    // #endif
 
     bool CheckMoveTile(Vector2 moveVector)
     {

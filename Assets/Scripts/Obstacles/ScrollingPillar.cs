@@ -11,6 +11,7 @@ public class ScrollingPillar : Obstacle
     protected override void Awake()
     {
         base.Awake();
+
         moveObject = GetComponent<MovingObject>();
         rotateObject = GetComponent<RotateObject>();
         animator = GetComponent<Animator>();

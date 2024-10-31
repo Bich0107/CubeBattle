@@ -465,7 +465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22fa69e8e75c42449a2cf876d84c2406, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateSpeed: {x: -360, y: 0, z: 0}
+  rotateSpeed: {x: 360, y: 0, z: 0}
   localRotation: 1
   rotateOnAwake: 0
 --- !u!114 &4626485235917519728
