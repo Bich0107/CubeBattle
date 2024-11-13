@@ -5,7 +5,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] Mover mover;
+    [Tooltip("Rotater for moving forward/backward")]
     [SerializeField] Rotater rotater;
+    [Tooltip("Rotater for rotating on the y axis")]
     [SerializeField] Rotater turnRotater;
     ITransformAffector[] affectors;
     float direction;
