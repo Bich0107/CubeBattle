@@ -18,8 +18,8 @@ TagManager:
   - Player
   - Path
   - Interactable
-  - 
-  - 
+  - Projectile
+  - Enemy
   - 
   - 
   - 

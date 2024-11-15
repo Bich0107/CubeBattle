@@ -5,7 +5,7 @@ using UnityEngine;
 
 public enum BodyPart
 {
-    Left, Right, Top, Bottom
+    Front, Back, Top, Bottom
 }
 
 public enum PartFace

@@ -374,7 +374,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9119754004769906278, guid: f5e7d1d09216b3241a4250f7cb97df87,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1900098933851351241}
   m_SourcePrefab: {fileID: 100100000, guid: f5e7d1d09216b3241a4250f7cb97df87, type: 3}
 --- !u!4 &2861098051104176878 stripped
 Transform:
@@ -382,6 +386,29 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1070914087633192357}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8093946282761460675 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9119754004769906278, guid: f5e7d1d09216b3241a4250f7cb97df87,
+    type: 3}
+  m_PrefabInstance: {fileID: 1070914087633192357}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1900098933851351241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8093946282761460675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6e29baeecd6f4743b2cfa12f3bdb0f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rune: {fileID: 0}
+  bodyPart: 0
+  partFace: 0
+  attack: 0
+  projectile: {fileID: 0}
 --- !u!1001 &3492180798007344653
 PrefabInstance:
   m_ObjectHideFlags: 0

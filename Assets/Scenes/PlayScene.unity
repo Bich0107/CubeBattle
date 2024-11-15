@@ -3758,6 +3758,30 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &970383160 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1949017405304927301, guid: 0f4ab6eddb9cbbe4282b047d52a9ce2a,
+    type: 3}
+  m_PrefabInstance: {fileID: 5458577849625026023}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &970383163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 970383160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6e29baeecd6f4743b2cfa12f3bdb0f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rune: {fileID: 0}
+  bodyPart: 1
+  partFace: 4
+  attack: 5
+  projectile: {fileID: 5602848479972849574, guid: 4b77296e5a862304e80f87db048cab82,
+    type: 3}
 --- !u!1001 &986214385
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10142,6 +10166,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1900098933851351241, guid: 0f4ab6eddb9cbbe4282b047d52a9ce2a,
+        type: 3}
+      propertyPath: attack
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1900098933851351241, guid: 0f4ab6eddb9cbbe4282b047d52a9ce2a,
+        type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 5602848479972849574, guid: 4b77296e5a862304e80f87db048cab82,
+        type: 3}
     - target: {fileID: 4119349425761713976, guid: 0f4ab6eddb9cbbe4282b047d52a9ce2a,
         type: 3}
       propertyPath: m_Name
@@ -10250,6 +10285,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2467308732924655624}
+    - targetCorrespondingSourceObject: {fileID: 1949017405304927301, guid: 0f4ab6eddb9cbbe4282b047d52a9ce2a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 970383163}
   m_SourcePrefab: {fileID: 100100000, guid: 0f4ab6eddb9cbbe4282b047d52a9ce2a, type: 3}
 --- !u!114 &5458577849625026024 stripped
 MonoBehaviour:
