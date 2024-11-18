@@ -5,10 +5,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] Mover mover;
-    [Tooltip("Rotater for moving forward/backward")]
-    [SerializeField] Rotater rotater;
-    [Tooltip("Rotater for rotating on the y axis")]
-    [SerializeField] Rotater turnRotater;
+    [SerializeField] Rotater verticalRotater;
+    [SerializeField] Rotater horizontalRotater;
+    [SerializeField] RuneDisplayer runeDisplayer;
     ITransformAffector[] affectors;
     float direction;
     bool isFaceForward = true;
@@ -26,28 +25,46 @@ public class PlayerController : MonoBehaviour
             direction = _movementVector.y > 0f ? 1f : -1f;
             if (!isFaceForward) // turn player if was facing diferrent direction
             {
+                if (direction >= 0f) runeDisplayer.TurnRight();
+                else runeDisplayer.TurnLeft();
+
                 isFaceForward = true;
-                turnRotater.Rotate(direction * Vector3.up);
+                horizontalRotater.Rotate(direction * Vector3.up);
             }
             else if (_moveable)
             {
-                direction = _movementVector.y > 0f ? 1f : -1f;
-                rotater.Rotate(direction * Vector3.right);
+                if (direction >= 0f) runeDisplayer.RotateForward();
+                else runeDisplayer.RotateBackward();
+
+                verticalRotater.Rotate(direction * Vector3.right);
+                horizontalRotater.Rotate(direction * Vector3.right);
+
+                Swap(ref verticalRotater, ref horizontalRotater);
+
                 mover.Move(direction * Vector3.forward);
             }
         }
         else
-        {
+        {   // moving left/right
             direction = _movementVector.x > 0f ? -1f : 1f;
             if (isFaceForward) // turn player if was facing diferrent direction
             {
+                if (direction >= 0f) runeDisplayer.TurnLeft();
+                else runeDisplayer.TurnRight();
+
                 isFaceForward = false;
-                turnRotater.Rotate(-direction * Vector3.up);
+                horizontalRotater.Rotate(-direction * Vector3.up);
             }
             else if (_moveable)
             {
-                direction = _movementVector.x > 0f ? -1f : 1f;
-                rotater.Rotate(direction * Vector3.forward);
+                if (direction >= 0f) runeDisplayer.RotateForward();
+                else runeDisplayer.RotateBackward();
+
+                verticalRotater.Rotate(direction * Vector3.forward);
+                horizontalRotater.Rotate(direction * Vector3.forward);
+
+                Swap(ref verticalRotater, ref horizontalRotater);
+
                 mover.Move(-direction * Vector3.right);
             }
         }
@@ -61,5 +78,12 @@ public class PlayerController : MonoBehaviour
         }
 
         return false;
+    }
+
+    void Swap(ref Rotater _rotater1, ref Rotater _rotater2)
+    {
+        Rotater temp = _rotater1;
+        _rotater1 = _rotater2;
+        _rotater2 = temp;
     }
 }

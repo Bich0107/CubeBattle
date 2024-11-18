@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3516959d474e9dc498407a496c1e9620, type: 3}
-  m_Name: DefaultRune 4
+  m_Name: TopRune
   m_EditorClassIdentifier: 
   id: 0
   name: Default rune
   description: Default rune. Doesn't have any special function.
-  sprite: {fileID: 2048158925, guid: 350f8e3d65e12834fb8db40ba474f6bb, type: 3}
+  sprite: {fileID: 21300000, guid: 087ea5d295c23e346a43380ceba4e5a7, type: 3}

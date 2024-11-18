@@ -7,6 +7,17 @@ public class RuneSetter : MonoBehaviour
     [SerializeField] RuneSO[] runes;
     [SerializeField] SpriteRenderer[] runeRenderers;
 
+    public RuneSO GetRune(PartFace _face)
+    {
+        int index = (int)_face;
+        if (index > runes.Length)
+        {
+            LogSystem.Instance.Log("Part face index out of range");
+            return null;
+        }
+        return runes[index];
+    }
+
     public void SetRune(RuneSO _rune, PartFace _face)
     {
         int index = (int)_face;
@@ -28,5 +39,23 @@ public class RuneSetter : MonoBehaviour
         {
             runeRenderers[i].sprite = runes[i].Sprite;
         }
+    }
+
+    public void TurnLeft()
+    {
+        RuneSO temp = runes[(int)PartFace.Back];
+        runes[(int)PartFace.Back] = runes[(int)PartFace.Left];
+        runes[(int)PartFace.Left] = runes[(int)PartFace.Front];
+        runes[(int)PartFace.Front] = runes[(int)PartFace.Right];
+        runes[(int)PartFace.Right] = temp;
+    }
+
+    public void TurnRight()
+    {
+        RuneSO temp = runes[(int)PartFace.Back];
+        runes[(int)PartFace.Back] = runes[(int)PartFace.Right];
+        runes[(int)PartFace.Right] = runes[(int)PartFace.Front];
+        runes[(int)PartFace.Front] = runes[(int)PartFace.Left];
+        runes[(int)PartFace.Left] = temp;
     }
 }

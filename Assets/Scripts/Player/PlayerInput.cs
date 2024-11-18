@@ -76,17 +76,15 @@ public class PlayerInput : MonoBehaviour
         if (!released) return;
 
         movementVector = (releasePos - clickPos).normalized;
+        bool movable = CheckMoveTile(movementVector);
 
         if (CheckClickPos())
         {
-            if (CheckMoveTile(movementVector))
-            {
-                ICommand command = new MoveCommand(player, movementVector, true);
-                CommandInvoker.ExecuteCommand(command);
+            ICommand command = new MoveCommand(player, movementVector, movable);
+            CommandInvoker.ExecuteCommand(command);
 
-                releasePos = Vector3.zero;
-                clickPos = Vector3.zero;
-            }
+            releasePos = Vector3.zero;
+            clickPos = Vector3.zero;
         }
 
         released = false;

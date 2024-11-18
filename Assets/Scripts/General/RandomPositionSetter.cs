@@ -26,6 +26,7 @@ public class RandomPositionSetter : MonoBehaviour
         Vector3 spawnPos = tileManager.GetTilePosition(spawnTile);
         spawnTile.SetObject(gameObject);
         transform.position = spawnPos;
-        Debug.Log(gameObject.name + " spawn at: " + transform.position);
+
+        //Debug.Log(gameObject.name + " spawn at: " + transform.position);
     }
 }

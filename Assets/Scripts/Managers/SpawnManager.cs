@@ -14,7 +14,6 @@ public class SpawnManager : MonoSingleton<SpawnManager>
     {
         scrollingPilarSpawner.Spawn();
 
-
         // the wall will take up all empty tile so spawn it last
         wallSpawner.Spawn();
     }

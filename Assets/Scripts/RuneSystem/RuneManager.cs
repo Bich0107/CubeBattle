@@ -3,22 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum BodyPart
-{
-    Front, Back, Top, Bottom
-}
-
-public enum PartFace
-{
-    Back, Front, Left, Right, Top
-}
-
 public class RuneManager : MonoBehaviour
 {
     [SerializeField] RuneSO[] runes;
     [SerializeField] RuneSetter[] runeSetters;
 
-    void Start()
+    void Awake()
     {
         int counter = 0;
         foreach (BodyPart part in Enum.GetValues(typeof(BodyPart)))
@@ -42,5 +32,14 @@ public class RuneManager : MonoBehaviour
 
         RuneSetter runeSetter = runeSetters[index];
         runeSetter.SetRune(_rune, _face);
+    }
+
+    public RuneSO GetRune(BodyPart _part, PartFace _face)
+    {
+        int index = (int)_part * Enum.GetValues(typeof(PartFace)).Length + (int)_face;
+        RuneSO result = runeSetters[index].GetRune(_face);
+        // ???????
+
+        return result;
     }
 }
