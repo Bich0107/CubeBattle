@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,13 +11,13 @@ public class Mover : MonoBehaviour, ITransformAffector
     [SerializeField] float moveTime;
     [SerializeField] bool moving = false;
 
-    public void Move(Vector3 _direction)
+    public void Move(Vector3 _direction, Action _endAction = null)
     {
         direction = _direction;
-        StartCoroutine(CR_Move());
+        StartCoroutine(CR_Move(_endAction));
     }
 
-    IEnumerator CR_Move()
+    IEnumerator CR_Move(Action _endAction = null)
     {
         moving = true;
 
@@ -30,6 +31,8 @@ public class Mover : MonoBehaviour, ITransformAffector
         }
 
         moving = false;
+
+        _endAction?.Invoke();
     }
 
     public bool IsBusy() => moving;

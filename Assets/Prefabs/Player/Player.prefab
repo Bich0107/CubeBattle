@@ -361,6 +361,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Front
       objectReference: {fileID: 0}
+    - target: {fileID: 1477224629356057023, guid: f5e7d1d09216b3241a4250f7cb97df87,
+        type: 3}
+      propertyPath: runeSetter
+      value: 
+      objectReference: {fileID: 5053628303529186583}
+    - target: {fileID: 2054070102048200649, guid: f5e7d1d09216b3241a4250f7cb97df87,
+        type: 3}
+      propertyPath: runeSetter
+      value: 
+      objectReference: {fileID: 5053628303529186583}
+    - target: {fileID: 2668678053582794467, guid: f5e7d1d09216b3241a4250f7cb97df87,
+        type: 3}
+      propertyPath: runeSetter
+      value: 
+      objectReference: {fileID: 7653057428911651919}
     - target: {fileID: 2983651471728770891, guid: f5e7d1d09216b3241a4250f7cb97df87,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -411,16 +426,51 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3553995222440650250, guid: f5e7d1d09216b3241a4250f7cb97df87,
+        type: 3}
+      propertyPath: runeSetter
+      value: 
+      objectReference: {fileID: 7653057428911651919}
+    - target: {fileID: 3937882435784246586, guid: f5e7d1d09216b3241a4250f7cb97df87,
+        type: 3}
+      propertyPath: runeSetter
+      value: 
+      objectReference: {fileID: 7653057428911651919}
+    - target: {fileID: 4112030209972637294, guid: f5e7d1d09216b3241a4250f7cb97df87,
+        type: 3}
+      propertyPath: runeSetter
+      value: 
+      objectReference: {fileID: 5053628303529186583}
+    - target: {fileID: 5158847184669500876, guid: f5e7d1d09216b3241a4250f7cb97df87,
+        type: 3}
+      propertyPath: runeSetter
+      value: 
+      objectReference: {fileID: 5053628303529186583}
     - target: {fileID: 5495309721234192297, guid: f5e7d1d09216b3241a4250f7cb97df87,
         type: 3}
       propertyPath: m_Name
       value: BodyAxis (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6676698389909850615, guid: f5e7d1d09216b3241a4250f7cb97df87,
+        type: 3}
+      propertyPath: runeSetter
+      value: 
+      objectReference: {fileID: 5053628303529186583}
     - target: {fileID: 7032886329312931848, guid: f5e7d1d09216b3241a4250f7cb97df87,
         type: 3}
       propertyPath: m_Name
       value: Back
       objectReference: {fileID: 0}
+    - target: {fileID: 7806593286304488926, guid: f5e7d1d09216b3241a4250f7cb97df87,
+        type: 3}
+      propertyPath: runeSetter
+      value: 
+      objectReference: {fileID: 7653057428911651919}
+    - target: {fileID: 8476002350650486427, guid: f5e7d1d09216b3241a4250f7cb97df87,
+        type: 3}
+      propertyPath: runeSetter
+      value: 
+      objectReference: {fileID: 7653057428911651919}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -525,6 +575,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Top
       objectReference: {fileID: 0}
+    - target: {fileID: 1477224629356057023, guid: f5e7d1d09216b3241a4250f7cb97df87,
+        type: 3}
+      propertyPath: runeSetter
+      value: 
+      objectReference: {fileID: 8685202275545378495}
+    - target: {fileID: 2054070102048200649, guid: f5e7d1d09216b3241a4250f7cb97df87,
+        type: 3}
+      propertyPath: runeSetter
+      value: 
+      objectReference: {fileID: 8685202275545378495}
+    - target: {fileID: 2668678053582794467, guid: f5e7d1d09216b3241a4250f7cb97df87,
+        type: 3}
+      propertyPath: runeSetter
+      value: 
+      objectReference: {fileID: 6097608301947455463}
     - target: {fileID: 2983651471728770891, guid: f5e7d1d09216b3241a4250f7cb97df87,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -575,16 +640,51 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3553995222440650250, guid: f5e7d1d09216b3241a4250f7cb97df87,
+        type: 3}
+      propertyPath: runeSetter
+      value: 
+      objectReference: {fileID: 6097608301947455463}
+    - target: {fileID: 3937882435784246586, guid: f5e7d1d09216b3241a4250f7cb97df87,
+        type: 3}
+      propertyPath: runeSetter
+      value: 
+      objectReference: {fileID: 6097608301947455463}
+    - target: {fileID: 4112030209972637294, guid: f5e7d1d09216b3241a4250f7cb97df87,
+        type: 3}
+      propertyPath: runeSetter
+      value: 
+      objectReference: {fileID: 8685202275545378495}
+    - target: {fileID: 5158847184669500876, guid: f5e7d1d09216b3241a4250f7cb97df87,
+        type: 3}
+      propertyPath: runeSetter
+      value: 
+      objectReference: {fileID: 8685202275545378495}
     - target: {fileID: 5495309721234192297, guid: f5e7d1d09216b3241a4250f7cb97df87,
         type: 3}
       propertyPath: m_Name
       value: BodyAxis
       objectReference: {fileID: 0}
+    - target: {fileID: 6676698389909850615, guid: f5e7d1d09216b3241a4250f7cb97df87,
+        type: 3}
+      propertyPath: runeSetter
+      value: 
+      objectReference: {fileID: 8685202275545378495}
     - target: {fileID: 7032886329312931848, guid: f5e7d1d09216b3241a4250f7cb97df87,
         type: 3}
       propertyPath: m_Name
       value: Bottom
       objectReference: {fileID: 0}
+    - target: {fileID: 7806593286304488926, guid: f5e7d1d09216b3241a4250f7cb97df87,
+        type: 3}
+      propertyPath: runeSetter
+      value: 
+      objectReference: {fileID: 6097608301947455463}
+    - target: {fileID: 8476002350650486427, guid: f5e7d1d09216b3241a4250f7cb97df87,
+        type: 3}
+      propertyPath: runeSetter
+      value: 
+      objectReference: {fileID: 6097608301947455463}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

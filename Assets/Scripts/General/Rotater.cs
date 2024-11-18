@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -12,15 +13,15 @@ public class Rotater : MonoBehaviour, ITransformAffector
     Quaternion rotation;
     [SerializeField] bool rotating = false;
 
-    public void Rotate(Vector3 _rotateVector)
+    public void Rotate(Vector3 _rotateVector, Action _endAction = null)
     {
         if (rotating) return;
 
         rotation = Quaternion.Euler(_rotateVector * angle);
-        StartCoroutine(CR_Rotate(rotation));
+        StartCoroutine(CR_Rotate(rotation, _endAction));
     }
 
-    IEnumerator CR_Rotate(Quaternion rotation)
+    IEnumerator CR_Rotate(Quaternion rotation, Action _endAction = null)
     {
         rotating = true;
 
@@ -38,6 +39,8 @@ public class Rotater : MonoBehaviour, ITransformAffector
         }
 
         rotating = false;
+
+        _endAction?.Invoke();
     }
 
     public bool IsBusy() => rotating;
