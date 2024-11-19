@@ -4,6 +4,8 @@ public class RuneReaderController : MonoBehaviour
 {
     [SerializeField] RuneReader[] runeReaders;
 
+    public RuneReader[] RuneReaders => runeReaders;
+
     void Start()
     {
         Read();

@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Rotater verticalRotater;
     [SerializeField] Rotater horizontalRotater;
     [SerializeField] RuneReaderController runeReaderController;
+    [SerializeField] RuneActivater runeActivater;
     ITransformAffector[] affectors;
     float direction;
     bool isFaceForward = true;
@@ -56,6 +57,8 @@ public class PlayerController : MonoBehaviour
                 mover.Move(-direction * Vector3.right, () => runeReaderController.Read());
             }
         }
+
+        // runeActivater.Check();
     }
 
     public bool IsBusy()

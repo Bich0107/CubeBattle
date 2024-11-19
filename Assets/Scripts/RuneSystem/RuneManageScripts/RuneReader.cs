@@ -14,6 +14,8 @@ public class RuneReader : MonoBehaviour
     RaycastHit hit;
     RuneFace runeFace;
 
+    public RuneSO Rune => rune;
+
     public void ReadRune()
     {
         if (Physics.Raycast(transform.position, direction, out hit, s_ray_distance, runeLayer, QueryTriggerInteraction.Collide))
@@ -24,6 +26,7 @@ public class RuneReader : MonoBehaviour
         }
         else
         {
+            rune = null;
             runeImage.sprite = null;
         }
     }

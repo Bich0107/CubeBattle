@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class RuneManager : MonoBehaviour
 {
+    [Tooltip("Each 5 runes for each body part (top, bottom, front, back)")]
     [SerializeField] RuneSO[] runes;
     [SerializeField] RuneSetter[] runeSetters;
 
