@@ -15,9 +15,10 @@ MonoBehaviour:
   id: 0
   name: Size enchance
   description: 
-  value: 0
+  value: 5
   sprite: {fileID: 2048158925, guid: 350f8e3d65e12834fb8db40ba474f6bb, type: 3}
   runeType: 1
   runePower: 6
   runePrefab: {fileID: 1387235070786958217, guid: dd9d1938b06109548bc39a301d00c510,
     type: 3}
+  RuneGO: {fileID: 0}

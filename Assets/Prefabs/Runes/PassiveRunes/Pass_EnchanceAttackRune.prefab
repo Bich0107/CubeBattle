@@ -46,4 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Rune: {fileID: 11400000, guid: d3a2f605555be1d42ad9e8e381565b39, type: 2}
   RunePower: 4
-  value: 1
+  value: 0.5

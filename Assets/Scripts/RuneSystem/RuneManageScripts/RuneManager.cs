@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class RuneManager : MonoBehaviour
 {
-    [Tooltip("Each 5 runes for each body part (top, bottom, front, back)")]
+    [Tooltip("Each 5 runes (Back, Front, Left, Right, Top) for each body part (front, back, top, bottom)")]
     [SerializeField] RuneSO[] runes;
+    [SerializeField] Transform[] runeSpawnTrans;
     [SerializeField] RuneSetter[] runeSetters;
 
     void Awake()
@@ -24,15 +25,22 @@ public class RuneManager : MonoBehaviour
 
     public void SetRune(RuneSO _rune, BodyPart _part, PartFace _face)
     {
-        int index = (int)_part;
-        if (index > runeSetters.Length)
+        int partIndex = (int)_part;
+        if (partIndex > runeSetters.Length)
         {
             LogSystem.Instance.Log("Body part index out of range");
             return;
         }
 
-        RuneSetter runeSetter = runeSetters[index];
+        RuneSetter runeSetter = runeSetters[partIndex];
         runeSetter.SetRune(_rune, _face);
+
+        // instantiate and store current instance of rune prefab into current rune SO
+        if (_rune.RunePrefab != null)
+        {
+            int tranIndex = partIndex * Enum.GetValues(typeof(PartFace)).Length + (int)_face;
+            _rune.RuneGO = Instantiate(_rune.RunePrefab, runeSpawnTrans[tranIndex].position, Quaternion.identity, runeSpawnTrans[tranIndex]);
+        }
     }
 
     public RuneSO GetRune(BodyPart _part, PartFace _face)

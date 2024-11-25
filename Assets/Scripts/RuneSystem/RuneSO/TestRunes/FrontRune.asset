@@ -16,3 +16,7 @@ MonoBehaviour:
   name: Default rune
   description: Default rune. Doesn't have any special function.
   sprite: {fileID: 21300000, guid: 6e697355c393c934ab3bd28e1dd11e8c, type: 3}
+  runeType: 1
+  runePower: 0
+  runePrefab: {fileID: 0}
+  RuneGO: {fileID: 0}

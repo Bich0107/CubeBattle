@@ -10,6 +10,11 @@ public class FireBallRune : ActiveRune, IEffectedBySizeEffect, IEffectedByAttack
     Vector3 currentSize;
     float currentAttack;
 
+    void OnEnable()
+    {
+        currentAttack = attack;
+    }
+
     public override void Activate(object _obj = null)
     {
         GameObject g = Instantiate(projectile, transform.position, transform.localRotation);
@@ -23,11 +28,13 @@ public class FireBallRune : ActiveRune, IEffectedBySizeEffect, IEffectedByAttack
 
     public void Effect_SizeChange(float _sizeIncreasePercent)
     {
+        LogSystem.Instance.Log($"Fire ball's size is increased!");
         currentSize = size * (1f + _sizeIncreasePercent);
     }
 
     public void Effect_AttackPowerChange(float _attackIncreasePercent)
     {
+        LogSystem.Instance.Log($"Fire ball's attack is increased!");
         currentAttack = attack * (1f + _attackIncreasePercent);
     }
 

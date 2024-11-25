@@ -48,4 +48,5 @@ MonoBehaviour:
   RunePower: 0
   attack: 5
   size: {x: 0.5, y: 0.5, z: 0.5}
-  projectile: {fileID: 0}
+  projectile: {fileID: 5602848479972849574, guid: 4b77296e5a862304e80f87db048cab82,
+    type: 3}
