@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   name: Attack enchance
-  description: 
-  value: 5
+  description: Enchance attack of active runes on the same face.
   sprite: {fileID: 363614840, guid: 350f8e3d65e12834fb8db40ba474f6bb, type: 3}
   runeType: 1
   runePower: 4

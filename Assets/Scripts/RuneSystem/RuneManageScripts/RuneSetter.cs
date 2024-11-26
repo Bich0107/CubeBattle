@@ -27,6 +27,8 @@ public class RuneSetter : MonoBehaviour
             return;
         }
 
+        if (_rune == null) return;
+
         runes[index] = _rune;
         runeRenderers[index].sprite = _rune.Sprite;
     }

@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 
 public class Slot : MonoBehaviour, IPointerClickHandler
 {
+    [SerializeField] RuneEquipHandler equipHandler;
     [SerializeField] InventorySlotSO slotSO;
     [SerializeField] TextMeshProUGUI amountText;
     [SerializeField] Image itemImage;
@@ -13,6 +14,11 @@ public class Slot : MonoBehaviour, IPointerClickHandler
     public Item SlotItem => slotSO.Item;
     public int Amount => slotSO.Amount;
     public int MaxStack => SlotItem == null ? 0 : SlotItem.MaxStack;
+
+    void Start()
+    {
+        equipHandler = FindObjectOfType<RuneEquipHandler>();
+    }
 
     public void SetSlotSO(InventorySlotSO _slotSO)
     {
@@ -92,11 +98,10 @@ public class Slot : MonoBehaviour, IPointerClickHandler
         slotSO = null;
     }
 
-    public void DisplayDescription()
+    public string GetDescription()
     {
-        if (SlotItem == null) Debug.Log("Slot empty");
-        else
-            Debug.Log($"Description of item {SlotItem.Name}: {SlotItem.Description}");
+        if (SlotItem == null) return "Slot empty";
+        else return $"Description of rune {SlotItem.Name}:\n {SlotItem.Description}";
     }
 
     public void Reset()
@@ -115,8 +120,8 @@ public class Slot : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("clicked");
-        DisplayDescription();
+        equipHandler.DisplayDescription(GetDescription());
+        equipHandler.Equip(this);
     }
 
     public bool IsEmpty => SlotItem == null;

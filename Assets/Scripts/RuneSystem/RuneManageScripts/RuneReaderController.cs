@@ -6,11 +6,6 @@ public class RuneReaderController : MonoBehaviour
 
     public RuneReader[] RuneReaders => runeReaders;
 
-    void Start()
-    {
-        Read();
-    }
-
     public void Read()
     {
         for (int i = 0; i < runeReaders.Length; i++)

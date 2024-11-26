@@ -10,10 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ddab73d1ed8a42e44946798788d2386e, type: 3}
-  m_Name: Item3
+  m_Name: Item_Passive_EnchanceAttack
   m_EditorClassIdentifier: 
-  name: Item 3
-  itemIndex: 2
-  sprite: {fileID: -28748609, guid: 350f8e3d65e12834fb8db40ba474f6bb, type: 3}
-  maxStack: 99
-  description: Item 3 description
+  itemIndex: 1
+  rune: {fileID: 11400000, guid: d3a2f605555be1d42ad9e8e381565b39, type: 2}
+  maxStack: 1

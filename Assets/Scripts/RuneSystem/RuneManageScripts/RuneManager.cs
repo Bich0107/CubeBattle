@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RuneManager : MonoBehaviour
@@ -10,7 +8,7 @@ public class RuneManager : MonoBehaviour
     [SerializeField] Transform[] runeSpawnTrans;
     [SerializeField] RuneSetter[] runeSetters;
 
-    void Awake()
+    public void Initialise()
     {
         int counter = 0;
         foreach (BodyPart part in Enum.GetValues(typeof(BodyPart)))

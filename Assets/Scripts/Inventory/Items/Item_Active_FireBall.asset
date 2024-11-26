@@ -10,10 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ddab73d1ed8a42e44946798788d2386e, type: 3}
-  m_Name: Item1
+  m_Name: Item_Active_FireBall
   m_EditorClassIdentifier: 
-  name: Item 1
   itemIndex: 0
-  sprite: {fileID: 1710440032, guid: 350f8e3d65e12834fb8db40ba474f6bb, type: 3}
-  maxStack: 99
-  description: Item 1 description
+  rune: {fileID: 11400000, guid: 0466a8aeb041f4d489df6ac996f2a546, type: 2}
+  maxStack: 1

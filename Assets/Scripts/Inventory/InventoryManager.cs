@@ -1,11 +1,6 @@
 using System;
 using UnityEngine;
 
-public enum ItemIndex
-{
-    Item1, Item2, Item3, Item4
-}
-
 public class InventoryManager : MonoBehaviour
 {
     [SerializeField] Item[] items;
@@ -57,8 +52,11 @@ public class InventoryManager : MonoBehaviour
 
     void StackItems()
     {
+        if (IsEmpty()) return;
+
         int index1 = 0;
         int index2 = 1;
+
         do
         {
             // check if the slot is empty
@@ -91,6 +89,8 @@ public class InventoryManager : MonoBehaviour
 
     void SortByItemType()
     {
+        if (IsEmpty()) return;
+
         int index1 = 0;
         int index2;
         int length = slots.Length;
@@ -156,6 +156,15 @@ public class InventoryManager : MonoBehaviour
             }
         }
         return result;
+    }
+
+    public bool IsEmpty()
+    {
+        for (int i = 0; i < slots.Length; i++)
+        {
+            if (!slots[i].IsEmpty) return false;
+        }
+        return true;
     }
 
     public void ResetAll()

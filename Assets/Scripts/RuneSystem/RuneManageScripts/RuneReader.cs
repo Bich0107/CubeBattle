@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>Read <see langword="and"/> store rune info <see langword="from"/> rune face</summary>
 public class RuneReader : MonoBehaviour
 {
     static readonly float s_ray_distance = 5f;

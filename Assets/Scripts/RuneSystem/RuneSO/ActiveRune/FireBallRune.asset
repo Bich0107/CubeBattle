@@ -14,10 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   name: Fire ball
-  description: 
-  value: 0
+  description: "Fire a fire ball that explode on contact. \nDeal fire magic damage.
+    \nLow chance to burn target for a short time."
   sprite: {fileID: -228791620, guid: 350f8e3d65e12834fb8db40ba474f6bb, type: 3}
   runeType: 0
   runePower: 0
   runePrefab: {fileID: 5311771419649485413, guid: b2b6d4f2040eec542821f7f764a4a86a,
     type: 3}
+  RuneGO: {fileID: 0}

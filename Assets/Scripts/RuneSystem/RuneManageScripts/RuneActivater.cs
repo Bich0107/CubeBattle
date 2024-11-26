@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>Process infor <see langword="from"/> rune reader <see langword="and"/> activate rune combos</summary>
 public class RuneActivater : MonoBehaviour
 {
     [SerializeField] Button leftRuneButton;
