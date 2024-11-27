@@ -20,7 +20,15 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public int AddItem(ItemIndex _itemIndex, int _amount)
+    public void UpdateUI()
+    {
+        for (int i = 0; i < slots.Length; i++)
+        {
+            slots[i].UpdateUI();
+        }
+    }
+
+    public int AddItem(ObjectIndex _objIndex, int _amount)
     {
         for (int i = 0; i < slots.Length; i++)
         {
@@ -28,9 +36,9 @@ public class InventoryManager : MonoBehaviour
             if (slots[i].SlotItem == null)
             {
                 // set item to this slot and store the overflow amount
-                _amount = slots[i].SetItem(items[(int)_itemIndex], _amount);
+                _amount = slots[i].SetItem(items[(int)_objIndex], _amount);
             }
-            else if (SlotHelper.HaveSameItem(slots[i], _itemIndex))
+            else if (SlotHelper.HaveSameItem(slots[i], _objIndex))
             {
                 // add item to this slot and store the overflow amount
                 _amount = slots[i].AddItem(_amount);
@@ -96,7 +104,7 @@ public class InventoryManager : MonoBehaviour
         int length = slots.Length;
 
         // loop through each type of item and sort items by type
-        foreach (ItemIndex itemIndex in Enum.GetValues(typeof(ItemIndex)))
+        foreach (ObjectIndex objIndex in Enum.GetValues(typeof(ObjectIndex)))
         {
             index2 = index1 + 1;
 
@@ -104,12 +112,12 @@ public class InventoryManager : MonoBehaviour
             while (index1 < length - 1)
             {
                 // loop until find a slot have no item or a different type
-                while ((index1 < length) && SlotHelper.HaveSameItem(slots[index1], itemIndex)) index1++;
+                while ((index1 < length) && SlotHelper.HaveSameItem(slots[index1], objIndex)) index1++;
 
                 index2 = index1 + 1;
 
                 // loop until find a slot with the same type
-                while ((index2 < length) && !SlotHelper.HaveSameItem(slots[index2], itemIndex)) index2++;
+                while ((index2 < length) && !SlotHelper.HaveSameItem(slots[index2], objIndex)) index2++;
 
                 // check if there is no item to wrap
                 if (index1 >= length || index2 >= length) break;
@@ -122,13 +130,13 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public bool GetItem(ItemIndex _itemIndex, int _amount)
+    public bool GetItem(ObjectIndex _objIndex, int _amount)
     {
         // check amount of that item in inventory
-        int realAmount = GetItemAmount(_itemIndex);
+        int realAmount = GetItemAmount(_objIndex);
         if (realAmount < _amount)
         {
-            Debug.Log($"not enough {_itemIndex}: {realAmount} < {_amount}");
+            Debug.Log($"not enough {_objIndex}: {realAmount} < {_amount}");
             return false;
         }
 
@@ -136,7 +144,7 @@ public class InventoryManager : MonoBehaviour
         for (int i = slots.Length - 1; i >= 0; i--)
         {
             // find slot contain that item
-            if (SlotHelper.HaveSameItem(slots[i], _itemIndex))
+            if (SlotHelper.HaveSameItem(slots[i], _objIndex))
             {
                 // calculate the need amount left after taking from a slot
                 _amount = slots[i].TakeItem(_amount);
@@ -145,12 +153,12 @@ public class InventoryManager : MonoBehaviour
         return false;
     }
 
-    int GetItemAmount(ItemIndex _itemIndex)
+    int GetItemAmount(ObjectIndex _objIndex)
     {
         int result = 0;
         for (int i = 0; i < slots.Length; i++)
         {
-            if (SlotHelper.HaveSameItem(slots[i], _itemIndex))
+            if (SlotHelper.HaveSameItem(slots[i], _objIndex))
             {
                 result += slots[i].Amount;
             }

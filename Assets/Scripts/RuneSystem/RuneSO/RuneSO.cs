@@ -9,7 +9,7 @@ public class RuneSO : ScriptableObject
     [SerializeField] string description;
     [SerializeField] Sprite sprite;
     [SerializeField] RuneType runeType;
-    [SerializeField] RunePower runePower;
+    [SerializeField] ObjectIndex objIndex;
     [SerializeField] GameObject runePrefab;
 
     public int Id => id;
@@ -17,7 +17,7 @@ public class RuneSO : ScriptableObject
     public string Description => description;
     public Sprite Sprite => sprite;
     public RuneType RuneType => runeType;
-    public RunePower RunePower => runePower;
+    public ObjectIndex ObjectIndex => objIndex;
     public GameObject RunePrefab => runePrefab;
 
     public GameObject RuneGO;

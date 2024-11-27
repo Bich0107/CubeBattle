@@ -5,5 +5,5 @@ using UnityEngine;
 public abstract class BaseRune : MonoBehaviour
 {
     public RuneSO Rune;
-    public RunePower RunePower;
+    public ObjectIndex ObjectIndex;
 }

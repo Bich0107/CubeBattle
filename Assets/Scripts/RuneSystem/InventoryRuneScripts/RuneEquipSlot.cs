@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class RuneEquipSlot : MonoBehaviour, IPointerClickHandler
 {
+    [SerializeField] InventoryManager inventoryManager;
     [SerializeField] RuneEquipHandler equipHandler;
     [SerializeField] PartFace face;
     [SerializeField] RuneSO rune;
@@ -35,7 +36,17 @@ public class RuneEquipSlot : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        equipHandler.SelectSlot(this);
+        // if this slot is select twice => remove rune from this slot
+        if (equipHandler.SelectSlot(this))
+        {
+            inventoryManager.AddItem(rune.ObjectIndex, 1);
+            inventoryManager.UpdateUI();
+
+            rune = null;
+
+            UpdateUI();
+            return;
+        }
         equipHandler.DisplayDescription(GetDescription());
     }
 

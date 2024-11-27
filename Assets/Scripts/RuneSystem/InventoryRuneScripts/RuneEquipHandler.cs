@@ -6,23 +6,29 @@ public class RuneEquipHandler : MonoBehaviour
 {
     [SerializeField] RuneSetter[] runeSetters;
     [SerializeField] RuneEquipSlot[] equipSlots;
-    [SerializeField] TextMeshProUGUI descriptionText;
     [SerializeField] RuneEquipSlot selectedSlot;
+    [SerializeField] TextMeshProUGUI descriptionText;
+    [SerializeField] TextMeshProUGUI bodyPartText;
     int runeSetterIndex;
     RuneSetter currentRuneSetter => runeSetters[runeSetterIndex];
 
     public void NextRuneSetter()
     {
         runeSetterIndex = runeSetterIndex + 1 < runeSetters.Length ? runeSetterIndex + 1 : 0;
+        bodyPartText.text = Enum.GetValues(typeof(BodyPart)).GetValue(runeSetterIndex).ToString();
         DisplayRuneSlots();
     }
 
     public void PreviousRuneSetter()
     {
-        runeSetterIndex = runeSetterIndex - 1 >= 0 ? runeSetterIndex - 1 : runeSetters.Length - 1;
+        runeSetterIndex = runeSetterIndex - 1 >= 0 ? (runeSetterIndex - 1) : (runeSetters.Length - 1);
+        bodyPartText.text = Enum.GetValues(typeof(BodyPart)).GetValue(runeSetterIndex).ToString();
         DisplayRuneSlots();
     }
 
+    /// <summary>
+    /// Get runes from rune setter and display on equip slots
+    /// </summary>
     public void DisplayRuneSlots()
     {
         foreach (PartFace face in Enum.GetValues(typeof(PartFace)))
@@ -32,9 +38,15 @@ public class RuneEquipHandler : MonoBehaviour
         }
     }
 
-    public void SelectSlot(RuneEquipSlot _slot)
+    /// <summary>
+    /// Return true if current selected slot is selected again, false otherwise
+    /// </summary>
+    public bool SelectSlot(RuneEquipSlot _slot)
     {
+        if (selectedSlot == _slot) return true;
+
         selectedSlot = _slot;
+        return false;
     }
 
     public void UpdateRuneSetter()
@@ -54,8 +66,5 @@ public class RuneEquipHandler : MonoBehaviour
         selectedSlot = null;
     }
 
-    public void DisplayDescription(string _text)
-    {
-        descriptionText.text = _text;
-    }
+    public void DisplayDescription(string _text) => descriptionText.text = _text;
 }

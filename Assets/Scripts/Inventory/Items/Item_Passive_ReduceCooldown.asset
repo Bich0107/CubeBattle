@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 275aff25657ccff45bd7b5257528896f, type: 3}
-  m_Name: Slot 2
+  m_Script: {fileID: 11500000, guid: ddab73d1ed8a42e44946798788d2386e, type: 3}
+  m_Name: Item_Passive_ReduceCooldown
   m_EditorClassIdentifier: 
-  Item: {fileID: 0}
-  Amount: 0
+  objIndex: 8
+  rune: {fileID: 11400000, guid: d3a2f605555be1d42ad9e8e381565b39, type: 2}
+  maxStack: 1

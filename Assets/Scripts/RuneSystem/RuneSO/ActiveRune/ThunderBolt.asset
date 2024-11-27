@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3516959d474e9dc498407a496c1e9620, type: 3}
-  m_Name: EnchanceSizeRune
+  m_Name: ThunderBolt
   m_EditorClassIdentifier: 
   id: 0
-  name: Size enchance
-  description: Enchance size of active runes on the same face.
-  sprite: {fileID: 2048158925, guid: 350f8e3d65e12834fb8db40ba474f6bb, type: 3}
-  runeType: 1
-  objIndex: 6
-  runePrefab: {fileID: 1387235070786958217, guid: dd9d1938b06109548bc39a301d00c510,
+  name: Thunderbolt
+  description: Thunderbolt description
+  sprite: {fileID: -228791620, guid: 350f8e3d65e12834fb8db40ba474f6bb, type: 3}
+  runeType: 0
+  objIndex: 3
+  runePrefab: {fileID: 5311771419649485413, guid: b2b6d4f2040eec542821f7f764a4a86a,
     type: 3}
   RuneGO: {fileID: 0}

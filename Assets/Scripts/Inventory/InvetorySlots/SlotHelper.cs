@@ -41,13 +41,13 @@ public class SlotHelper
     {
         if (slot1.SlotItem == null || slot2.SlotItem == null) return false;
 
-        return slot1.SlotItem.ItemIndex == slot2.SlotItem.ItemIndex;
+        return slot1.SlotItem.ObjectIndex == slot2.SlotItem.ObjectIndex;
     }
 
-    public static bool HaveSameItem(Slot slot, ItemIndex index)
+    public static bool HaveSameItem(Slot slot, ObjectIndex index)
     {
         if (slot.SlotItem == null) return false;
 
-        return slot.SlotItem.ItemIndex == index;
+        return slot.SlotItem.ObjectIndex == index;
     }
 }

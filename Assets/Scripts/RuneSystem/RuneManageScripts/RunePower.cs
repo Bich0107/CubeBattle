@@ -5,7 +5,6 @@ public enum RunePower
     Active_EarthWall,
     Active_ThunderBolt,
 
-
     Pass_EnchanceAttack,
     Pass_EnchanceRange,
     Pass_EnchanceSize,

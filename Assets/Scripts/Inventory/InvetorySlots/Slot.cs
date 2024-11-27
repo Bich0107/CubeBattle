@@ -26,7 +26,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler
         UpdateUI();
     }
 
-    void UpdateUI()
+    public void UpdateUI()
     {
         amountText.text = slotSO.Amount.ToString();
 
@@ -95,7 +95,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler
     {
         amountText.text = "0";
         itemImage.sprite = null;
-        slotSO = null;
+        slotSO.Item = null;
     }
 
     public string GetDescription()
