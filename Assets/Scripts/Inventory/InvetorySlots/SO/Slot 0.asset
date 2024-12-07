@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Slot 0
   m_EditorClassIdentifier: 
   Item: {fileID: 11400000, guid: 35c3018ce96451b4f909e0b302dd1796, type: 2}
-  Amount: 1
+  Amount: 99

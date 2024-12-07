@@ -127,4 +127,6 @@ public class PlayerInput : MonoBehaviour
 
         return false;
     }
+
+    public void SetControlStatus(bool _status) => disableControl = !_status;
 }

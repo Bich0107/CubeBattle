@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Item_Active_EarthWall
   m_EditorClassIdentifier: 
   rune: {fileID: 11400000, guid: 3ead71c16d027bd4cbb52a0d7176eade, type: 2}
-  maxStack: 1
+  maxStack: 99

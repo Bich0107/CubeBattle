@@ -3,13 +3,18 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System.Collections;
 
 public class Slot : MonoBehaviour, IPointerClickHandler
 {
+    static float s_doubleTouchInterval = 0.2f;
+
     [SerializeField] RuneEquipHandler equipHandler;
     [SerializeField] InventorySlotSO slotSO;
     [SerializeField] TextMeshProUGUI amountText;
     [SerializeField] Image itemImage;
+    WaitForSeconds doubleTouchWait;
+    int touchCounter = 0;
     public InventorySlotSO SlotSO => slotSO;
     public Item SlotItem => slotSO.Item;
     public int Amount => slotSO.Amount;
@@ -17,6 +22,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler
 
     void Start()
     {
+        doubleTouchWait = new WaitForSeconds(s_doubleTouchInterval);
         equipHandler = FindObjectOfType<RuneEquipHandler>();
     }
 
@@ -120,8 +126,24 @@ public class Slot : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        touchCounter++;
+        StartCoroutine(CR_WaitForDoubleClick());
+
         equipHandler.DisplayDescription(GetDescription());
-        equipHandler.Equip(this);
+        if (touchCounter >= 2)
+        {
+            equipHandler.QuickEquip(this);
+        }
+        else
+        {
+            equipHandler.Equip(this);
+        }
+    }
+
+    IEnumerator CR_WaitForDoubleClick()
+    {
+        yield return doubleTouchWait;
+        touchCounter = 0;
     }
 
     public bool IsEmpty => SlotItem == null;

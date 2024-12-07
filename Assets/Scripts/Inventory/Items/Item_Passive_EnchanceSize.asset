@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddab73d1ed8a42e44946798788d2386e, type: 3}
   m_Name: Item_Passive_EnchanceSize
   m_EditorClassIdentifier: 
-  itemIndex: 2
   rune: {fileID: 11400000, guid: 36f80bc6391b4a44c8361f710ed1caad, type: 2}
-  maxStack: 1
+  maxStack: 99

@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 275aff25657ccff45bd7b5257528896f, type: 3}
   m_Name: Slot 3
   m_EditorClassIdentifier: 
-  Item: {fileID: 0}
-  Amount: 0
-  SlotImage: {fileID: 0}
+  Item: {fileID: 11400000, guid: 4930226d633460d40a07cb2a1a6ef473, type: 2}
+  Amount: 99

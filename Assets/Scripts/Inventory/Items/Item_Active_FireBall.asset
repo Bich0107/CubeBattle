@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddab73d1ed8a42e44946798788d2386e, type: 3}
   m_Name: Item_Active_FireBall
   m_EditorClassIdentifier: 
-  itemIndex: 0
   rune: {fileID: 11400000, guid: 0466a8aeb041f4d489df6ac996f2a546, type: 2}
-  maxStack: 1
+  maxStack: 99

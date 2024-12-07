@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddab73d1ed8a42e44946798788d2386e, type: 3}
   m_Name: Item_Passive_ReduceManaCost
   m_EditorClassIdentifier: 
-  objIndex: 7
   rune: {fileID: 11400000, guid: d3a2f605555be1d42ad9e8e381565b39, type: 2}
-  maxStack: 1
+  maxStack: 99

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Item_Active_IcicleSpear
   m_EditorClassIdentifier: 
   rune: {fileID: 11400000, guid: bddae53cb021c3c49a6bdbb61370dc03, type: 2}
-  maxStack: 1
+  maxStack: 99

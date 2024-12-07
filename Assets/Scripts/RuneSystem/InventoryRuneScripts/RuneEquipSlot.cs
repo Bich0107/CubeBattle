@@ -39,15 +39,22 @@ public class RuneEquipSlot : MonoBehaviour, IPointerClickHandler
         // if this slot is select twice => remove rune from this slot
         if (equipHandler.SelectSlot(this))
         {
+            RemoveRune();
+        }
+        equipHandler.DisplayDescription(GetDescription());
+    }
+
+    public void RemoveRune()
+    {
+        if (rune != null)
+        {
             inventoryManager.AddItem(rune.ObjectIndex, 1);
             inventoryManager.UpdateUI();
 
             rune = null;
 
             UpdateUI();
-            return;
         }
-        equipHandler.DisplayDescription(GetDescription());
     }
 
     public string GetDescription()
@@ -56,4 +63,5 @@ public class RuneEquipSlot : MonoBehaviour, IPointerClickHandler
         else return $"Description of rune {rune.Name}:\n {rune.Description}";
     }
 
+    public bool IsEmpty() => rune == null;
 }
